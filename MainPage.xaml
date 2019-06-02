@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="TechNews.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TechNews"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="DevGrid">
+        <NavigationView x:Name="Nav1" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" IsPaneOpen="True">
+            <NavigationView.Header>
+                <TextBlock x:Name="tp1" Text="News" Style="{StaticResource TitleTextBlockStyle}" FontWeight="ExtraBold"></TextBlock>
+            </NavigationView.Header>
+            <NavigationView.MenuItems>
+
+                <NavigationViewItem Content="Science/Technology" x:Name="A">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon  Symbol="Calculator"></SymbolIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+         
+                
+            </NavigationView.MenuItems>
+            <NavigationView.Content>
+                <StackPanel>
+                    <Button x:Name="RefButton" Style="{StaticResource ButtonRevealStyle}">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Refresh" HorizontalAlignment="Left" VerticalAlignment="Top"></SymbolIcon>
+                        </Button.Content>
+                    </Button>
+                    <ScrollViewer Height="908" Width="1180" HorizontalAlignment="Left">
+                        <ListView x:Name="Help" ItemsSource="{x:Bind viewmodel}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local:singlenews">
+
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock x:Name="Tex1" Text="{x:Bind Title}" TextWrapping="Wrap" Width="500" FontWeight="ExtraBold" FontSize="35" Style="{StaticResource CaptionTextBlockStyle}"></TextBlock>
+
+                                        <Image x:Name="Img1" Height="300" Width="300" Source="{x:Bind image}" Stretch="UniformToFill" HorizontalAlignment="Left"></Image>
+                                        <MenuFlyoutSeparator></MenuFlyoutSeparator>
+                                    </StackPanel>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </StackPanel>
+            </NavigationView.Content>
+        </NavigationView>
+    
+    </Grid>
+</Page>
